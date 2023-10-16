@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="row">
+
+        <input type="search" class="form-control mb-4" placeholder="Pesquise pelo funcionario" (input)="search($event)">
+
+        <div class="col-md-12 mb-4">
+            <button class="btn btn-success">Cadastrar funcionario</button>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sobrenome</th>
+                    <th scope="col">Departamento</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of funcionarios">
+
+
+                <tr>
+                    <th>
+                        <div *ngIf="item.ativo == true; else inativo">
+                            <i style="color: green;" class="bi bi-ban-fill"></i>
+                        </div>
+
+                        <ng-template #inativo>
+                            <i style="color: red;" class="bi bi-ban-fill"></i>
+                        </ng-template>
+
+
+                    </th>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.sobrenome }}</td>
+                    <td>{{ item.departamento }}</td>
+                    <td>
+                        <button style="margin-right: 6px;" class="btn btn-primary">Editar</button>
+                        <button class="btn btn-secondary">Detalhes</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
